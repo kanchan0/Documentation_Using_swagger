@@ -10,7 +10,7 @@ for futher details vist the link https://swagger.io/docs/specification/2-0/what-
 #### To get started follow the steps 
 ##### 1. clone the project `git clone git@github.com:kanchan0/Documentation_Using_swagger.git`
 ##### 2. Make a folder in root directory named config and a file name keys.js inside it
-         this file contain the details of the database connectivity. Give the details in
+         This file contains the detail of the database connectivity. Give the details in
          the following format
          
          module.exports={
@@ -19,8 +19,13 @@ for futher details vist the link https://swagger.io/docs/specification/2-0/what-
          
 ##### 3. run "npm install" to download all the dependencies
 ##### 4. Run the project by "nodemon app.js" or "node app.js"
+##### 5.open browser and visit "http://localhost:8000/documentation"
 
 
+#### Snapshot of the documentation you get.
+![MainPage](uploads/home.png)
+![MainPage](uploads/user.png)
+![MainPage](uploads/put.png)
 
-![MainPage](uploads/1.png)
+
 
