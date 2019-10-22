@@ -22,6 +22,102 @@ for futher details vist the link https://swagger.io/docs/specification/2-0/what-
 ##### 5.open browser and visit "http://localhost:8000/documentation"
 
 
+#### Understanding the code
+##### I am assuming you know how the basic express app works and use of multer for uploading files.
+
+##### Now lets dive into how swagger gives us the beautiful documentation
+         DocSwagger.js
+         
+         const swaggerUi=require('swagger-ui-express');       //This module allows you to serve auto-generated swagger-ui                                                                   //generated API docs from express
+         const swaggerJsDoc=require('swagger-jsdoc');         //Allows you to markup routes with jsdoc comments
+         
+         //option is what you see before the routes start like name,description,baseUrl etc.         
+         const Options={
+             swagger:'2.0',
+             swaggerDefinition:{
+                 info:{
+                     title:'REST APIs',
+                     version:'1.0.0',
+                     description:'Swagger for documenting RESTFul apis'
+                  },
+                 basePath:'/Documentation'
+             },
+             apis:['endPoints.js']
+         }
+
+         const specification=swaggerJsDoc(Options);
+
+         module.exports=(app)=>{
+
+             app.use('/documentation',swaggerUi.serve,swaggerUi.setup(specification));
+
+         }
+
+
+##### endpoints.js{This is not the whole file just the part that need a bit explaination}
+        
+             /**
+              * @swagger
+              * /users:                               #routes
+              *      post:                            # type of request {get,post,put,delete}
+              *        tags: 
+              *        - user                    
+              *        summary: create users
+              *        description: This operation creates user
+              *        consumes:                     # type of data it will take 
+              *        - multipart/form-data         # it parts the input into multiple part,it can text as well as file
+              *        produces:                     # type of output data
+              *        - application/json
+              *        - application/xml
+              *        parameters:                   
+              *        - in: formData                
+              *          name: profilePicture
+              *          type: file
+              *          required: true
+              *          description: The file to upload.
+              *        - in: formData
+              *          name: email
+              *          type: string
+              *          required: true
+              *          description:   email id please 
+              *        - in: formData
+              *          name: firstName
+              *          type: string
+              *          required: true
+              *          description: first name of the user    
+              *        - in: formData
+              *          name: lastName
+              *          type: string
+              *          required: true
+              *          description: lastname of the user
+              *        responses:
+              *            200:
+              *              description: successful
+              *            400:
+              *              description: bad request
+              *            500:
+              *              description: internal server error
+             
+             
+              #Schema to give idea how data should be passed.Although you can't see the use of it in above route
+              # refer to "PUT" in endpoints.js, to know its functionality.
+     
+              * definitions:               
+              *      User:
+              *         type: object
+              *         properties:
+              *              email:
+              *                  type: string
+              *              firstName:
+              *                  type: string
+              *              lastName:
+              *                  type: string
+              */
+
+
+         
+
+
 #### Snapshot of the documentation you get.
 
 ![MainPage](uploads/home.png)
