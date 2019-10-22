@@ -26,11 +26,13 @@ for futher details vist the link https://swagger.io/docs/specification/2-0/what-
 
 ![MainPage](uploads/home.png)
 This is the home page where you can see all the apis you have created and can test by expanding them.
-
+###
+###
 ![MainPage](uploads/user.png)
 After expanding the api for url 'localhost:8000/users', you will get the above view.
 To test it just click on `try it out` and fill the required details and click on execute.
-
+###
+###
 ![MainPage](uploads/put.png)
 This is for modifying details of the created user by providing details you want to change.
 
